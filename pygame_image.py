@@ -13,16 +13,20 @@ def main():
 
     tmr = 0
     bird_fly = 0
+    bg_img_go = 0
 
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
         tmr += 1
+        bg_img_go = tmr % 1600
+
         if tmr % 100 == 0:
             bird_fly += 1
-        screen.blit(bg_img, [0, 0])
 
+        screen.blit(bg_img, [-bg_img_go, 0])
+        screen.blit(bg_img, [1600 - bg_img_go, 0])
         screen.blit(bird_list[bird_fly % 2], (300, 200))
 
 
